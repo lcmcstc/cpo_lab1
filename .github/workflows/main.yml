@@ -1,36 +1,40 @@
-# This is a basic workflow to help you get started with Actions
 
-name: LX and Lcmc
+name: Python sanity check and tests
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+
+  python:
+    name: Run tests and lint python
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    timeout-minutes: 5
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      # prepare environment
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v3
+      - run: pip install -r requirements.txt
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # run tests
+      - run: pip install pytest coverage
+      - run: coverage run -m pytest --verbose
+      - run: coverage report *.py
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # code style checks
+      - run: pip install pycodestyle
+      - run: pycodestyle .
+
+      # type annotation checks
+      - run: pip install mypy
+      - run: mypy .
+
+      # if you pretend to make a typed version of your program, you should uncomment this line:  
+      # - run: mypy . --strict
+
+  markdown:
+    name: Lint markdown
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Lint markdown files
+      uses: actionshub/markdownlint@main
