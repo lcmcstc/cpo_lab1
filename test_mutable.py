@@ -1,9 +1,7 @@
 import unittest
 from hypothesis import given
 import hypothesis.strategies as st
-
 from Hashmap_mutable import *
-
 class TestDict(unittest.TestCase):
     def test_size(self):
         print("start testing Dict.size")
@@ -15,7 +13,6 @@ class TestDict(unittest.TestCase):
         mydict = MyDictionary(5);
         for i in range (10):
             mydict.add(i,i)
-        #print("mydict.size =",mydict.size)
         mydict.print()
         print("-----------over----------")
     def test_set(self):
@@ -61,7 +58,6 @@ class TestDict(unittest.TestCase):
         ret=mydict.to_list()
         for i in range(5):
             print(ret[i].key,ret[i].value)
-
         print("-----------over----------")
 
 

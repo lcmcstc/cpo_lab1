@@ -239,7 +239,8 @@ def print_hi(name):
     print("call tolist")
     print(my_dictionary.to_list())
     print("--------------------------")
-    print("init a list,size is 2 [{lcmc:tc},{7758:5.61}],and then call form_list")
+    print("init a list,size is 2 "
+          "[{lcmc:tc},{7758:5.61}],and then call form_list")
     tlist = [i for i in range(2)]
     tlist[0] = MyEntry("lcmc", "tc")
     tlist[1] = MyEntry(7758, 5.61)
@@ -250,13 +251,17 @@ def print_hi(name):
     my_dictionary.mutFilter_key(lambda e: isinstance(e, int))
     my_dictionary.print()
     print("--------------------------")
-    print("add {lcmc,66} into dictionary and call map_value , let every value add 1")
+    print("add {lcmc,66} into dictionary "
+          "and call map_value , let every value add 1")
     my_dictionary.add("lcmc", 66)
     my_dictionary.map_value(lambda e: e + 1)
     my_dictionary.print()
-    # if types of the values are different , there may be some error
+    # if types of the values are different
+    # there may be some error
     print("--------------------------")
-    print("call reduce,sum all values , and if types of the values are different , there may be some error")
+    print("call reduce,sum all values,"
+          "and if types of the values are different,"
+          "there may be some error")
     print("sum:" + str(my_dictionary.reduce_value(lambda x, y: x + y)))
     print("--------------------------")
     print("use iter out two keys")
