@@ -1,9 +1,11 @@
 # This is a sample Python script.
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-#Variant_8: Dictionary based on hash-map, open address
+
+# Variant_8: Dictionary based on hash-map, open address
 import threading
 from threading import Lock
+
 
 class MyEntry:
     def __init__(self, key, value):
@@ -23,6 +25,7 @@ class MyDictionary:
         # que is used to record the seq of inserts
         self.que = [i for i in range(size)]
         self.top = -1
+        # init que、store、keys
         for i in range(size):
             self.que[i] = None
         for i in range(2 * size):
@@ -44,7 +47,7 @@ class MyDictionary:
             self.add(entry.key, entry.value)
         return self
 
-    # model hash
+    # model hash(modular arithmetic) :: f( key ) = key mod p ( p ≤ m )
     def compute_index(self, key):
         hash_value = hash(key)
         if hash_value < 0:
@@ -66,6 +69,7 @@ class MyDictionary:
             self.top -= 1
 
     # transform key to index
+    # open address
     def find_index_by_key(self, key):
         index = self.compute_index(key)
         if self.keys[index] == key:
@@ -89,6 +93,8 @@ class MyDictionary:
             return False
         if value is None:
             return False
+        # if key is None | value is None:
+        #   return  False
         lock = Lock()
         lock.acquire()
         try:
@@ -162,8 +168,11 @@ class MyDictionary:
     def remove_by_value(self, value):
         for i in range(len(self.store)):
             if self.store[i] == value:
-                self.remove_by_key(self.keys[i])
-        return True
+                return self.remove_by_key(self.keys[i])
+        return False
+
+    def get_size(self):
+        return self.size
 
     def contains_value(self, item):
         for i in self.store:
@@ -258,7 +267,6 @@ def print_hi(name):
     print(my_dictionary.next_key())
     print("---------------")
 
-
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('lcmc')
+# if __name__ == '__main__':
+#     print_hi('test')
