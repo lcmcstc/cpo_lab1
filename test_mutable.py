@@ -159,13 +159,14 @@ class TestDict(unittest.TestCase):
         tlist[0] = MyEntry(1, 1)
         tlist[1] = MyEntry(2, 2)
         tlist[2] = MyEntry(3, 3)
-        myd=MyDictionary()
+        myd = MyDictionary()
         myd.from_list(tlist)
-        tmp=[]
+        tmp = []
         for e in myd:
             tmp.append(e)
-        self.assertEqual(tlist,tmp)
-        self.assertEqual(myd.to_list(),tmp)
+        self.assertEqual(tlist, tmp)
+        self.assertEqual(myd.to_list(), tmp)
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
