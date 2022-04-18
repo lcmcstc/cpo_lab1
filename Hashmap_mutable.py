@@ -13,10 +13,18 @@ class MyEntry:
     def __str__(self):
         return "{" + str(self.key) + ":" + str(self.value) + "}"
 
+    def __eq__(self, other):
+        a = self.key == other.key
+        b = self.value == other.value
+        if a & b:
+            return True
+        else:
+            return False
+
 
 class MyDictionary:
 
-    def __init__(self, size):
+    def __init__(self, size=0):
         self.size = size
         self.store = [i for i in range(2 * size)]
         self.keys = [i for i in range(2 * size)]
@@ -29,6 +37,19 @@ class MyDictionary:
         for i in range(2 * size):
             self.store[i] = None
             self.keys[i] = None
+
+    def __eq__(self, other):
+        for i in range(len(self.que)):
+            if self.que[i] is None:
+                break
+            else:
+                a = self.que[i] == other.que[i]
+                b = self.get(self.que[i]) == other.get(other.que[i])
+                if a & b:
+                    continue
+                else:
+                    return False
+        return True
 
     def to_list(self):
         ret = [i for i in range(len(self.que))]
@@ -84,6 +105,7 @@ class MyDictionary:
 
     def add(self, key, value):
         self.set(key, value)
+        return self
 
     # when set ,the object should be locked
     def set(self, key, value):
@@ -198,18 +220,29 @@ class MyDictionary:
                 self.store[i] = p(self.store[i])
 
     def reduce_value(self, p):
-        ret = None
+        ret = 0
         for i in range(len(self.store)):
             if self.store[i] is not None:
-                if ret is None:
-                    ret = self.store[i]
-                else:
-                    ret = p(ret, self.store[i])
+                ret = p(ret, self.store[i])
         return ret
 
     def iter_key(self):
         self.a = 0
         return self
+
+    def __iter__(self):
+        self.a = 0
+        return self
+
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        if self.size <= x:
+            raise StopIteration
+        if self.que[x] is None:
+            return None
+        entry = MyEntry(self.que[x], self.get(self.que[x]))
+        return entry
 
     def next_key(self):
         x = self.a
@@ -262,6 +295,8 @@ def print_hi(name):
     print("call reduce,sum all values,"
           "and if types of the values are different,"
           "there may be some error")
+    my_dictionary.print()
+    print("---")
     print("sum:" + str(my_dictionary.reduce_value(lambda x, y: x + y)))
     print("--------------------------")
     print("use iter out two keys")
@@ -270,6 +305,7 @@ def print_hi(name):
     print(my_dictionary.next_key())
     print("---------------")
 
+
 # Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     print_hi('test')
+if __name__ == '__main__':
+    print_hi('test')
