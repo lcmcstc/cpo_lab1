@@ -30,9 +30,9 @@ Objectives:
 
 ### Variant *8*
 
-* You can use the built-in list for storing data.
-* You need to check that your implementation correctly works with None value.
-* You need to implement functions/methods for getting/setting value by key.
+- You can use the built-in list for storing data.
+- You need to check that your implementation correctly works with None value.
+- You need to implement functions/methods for getting/setting value by key.
 
 ---
 
@@ -72,8 +72,7 @@ then`S` with • `(concat)` is a monoid if it satisfies the following two axioms
 __Pay extra attention to return values and corner cases like:__
 
 1. What should happen, if a user puts **None** value to the data structure?
-2. What should happen, if a user puts elements with **different types**
-(e.g., *strings* and *numbers*)?
+2. What should happen, if a user puts elements with **different types**?
 
 -->
 
