@@ -28,9 +28,9 @@ Objectives:
 
 ### Variant *8*
 
-1.  You can use the built-in list for storing data.
-2.  You need to check that your implementation correctly works with None value
-3.  You need to implement functions/methods for getting/setting value by key.
+1. You can use the built-in list for storing data.
+2. You need to check that your implementation correctly works with None value
+3. You need to implement functions/methods for getting/setting value by key.
 
 ### Features of the data structure implementation
 
