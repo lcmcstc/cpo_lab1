@@ -1,11 +1,11 @@
-
-# cpo_lab1
-
 ## Introduction
 ---
 **Group name** _HDU_
+
 **Group number** _LiXiao、LiChangMinChen_
+
 **Laboratory work number** _1_
+
 **Variant 8** _Dictionary based on hash-map, open address_
 
 ---
