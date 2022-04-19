@@ -14,8 +14,11 @@
 
 Objectives:
 
-- Use development tools: Python 3, IDE/source code editor, git, Github Actions, and laboratory work process
--  Design **algorithms and data structures** in **mutable** styles
+- Use development tools: 
+  - Python 3, IDE/source code editor
+  - git, Github Actions
+  - laboratory work process
+- Design **algorithms and data structures** in **mutable** styles
 - Develop **unit and property-based tests**
 
 ### Variant *8*
@@ -36,9 +39,9 @@ Objectives:
   - size `lst.size()`
   - is member `lst.member(3)`
   - reverse `lst.reverse()` (if applicable)
-- **Conversion** from/to built-in `list` (you should avoid of usage these function into your library):
-  - from_list `lst.from_list([12,99,37])`
-  - to_list `lst.to_list()`
+- **Conversion** from/to built-in`list`:
+  - from_list`lst.from_list([12,99,37])`
+  - to_list`lst.to_list()`
 - **Filter** data structure by specific predicate `lst.filter(is_even)`
 - **Reduce** process structure elements to build a return value by specific functions `lst.reduce(sum)`
 - Data structure should be **an iterator** in Python style
@@ -49,8 +52,6 @@ Objectives:
 
 <!--
 __Pay extra attention to return values and corner cases like:__
-
 1. What should happen, if a user puts **None** value to the data structure?
-
 2. What should happen, if a user puts elements with **different types** (e.g., *strings* and *numbers*)? 
 --> 
