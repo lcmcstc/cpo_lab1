@@ -1,5 +1,8 @@
+
 # _Report_
+
 ## Introduction
+
 ---
 
 **Group name** _HDU_
@@ -10,6 +13,7 @@
 
 **Variant 8** _Dictionary based on hash-map, open address_
 ---
+
 ### Description of Lab *1*
 
 Objectives:
