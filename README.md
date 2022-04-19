@@ -12,6 +12,7 @@
 **Laboratory work number**_1_
 
 **Variant 8** _Dictionary based on hash-map, open address_
+
 ---
 
 ### Description of Lab *1*
