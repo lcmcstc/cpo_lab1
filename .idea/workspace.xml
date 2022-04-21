@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60369bf2-10c0-4aa1-a8ad-e5e47cb09046" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_mutable.TestDict.test_iter">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Hashmap_mutable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,11 +154,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_iter" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_from_list_to_list_equality" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_reduce" />
         <item itemvalue="Python.Hashmap_mutable" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_map" />
       </list>
     </recent_temporary>
   </component>
@@ -177,6 +172,7 @@
       <workItem from="1650287899296" duration="608000" />
       <workItem from="1650336136598" duration="2092000" />
       <workItem from="1650347919548" duration="340000" />
+      <workItem from="1650526799178" duration="91000" />
     </task>
     <servers />
   </component>
