@@ -44,12 +44,12 @@ Objectives:
   - key for dictionaries
   - value for sets value
 - **Access**:
-    - size `lst.size()`
-    - is member `lst.member(3)`
-    - reverse `lst.reverse()` (if applicable)
+  - size `lst.size()`
+  - is member `lst.member(3)`
+  - reverse `lst.reverse()` (if applicable)
 - **Conversion** from/to built-in`list`:
-    - from_list`lst.from_list([12,99,37])`
-    - to_list`lst.to_list()`
+  - from_list`lst.from_list([12,99,37])`
+  - to_list`lst.to_list()`
 - **Filter** data structure by specific predicate `lst.filter(is_even)`
 - **Reduce** process structure elements to build a return value by specific functions`lst.reduce(sum)`
 - Data structure should be **an iterator** in Python style
@@ -60,13 +60,13 @@ Objectives:
 > Associativity:
 > For all `a,b` and `c` in `S`, the equation `(a•b)•c=a•(b•c)`holds.
 > Identity element:
-> There exists an element `e(empty)` in `S` such that, 
+> There exists an element `e(empty)` in `S` such that,
 > for every element `a` in `S`the equations`e•a=a•e=a` hold.
 
 - __Pay extra attention to return values and corner cases like:__
 
-  1. What should happen, if a user puts **None** value to the data structure?
-  2. What should happen, if a user puts elements with **different types**?
+  - What should happen, if a user puts **None** value to the data structure?
+  - What should happen, if a user puts elements with **different types**?
 
 ---
 
@@ -131,53 +131,53 @@ Objectives:
 
 3. Remove
 
-    1. index for lists
+   - index for lists
 
-    ```
-    def remove_by_seq(self, seq):
-        if seq >= self.size:
-            return False
-        if self.que[seq] is None:
-            return False
-        return self.remove_by_key(self.que[seq])
-    ```
+      ```
+      def remove_by_seq(self, seq):
+          if seq >= self.size:
+              return False
+          if self.que[seq] is None:
+              return False
+          return self.remove_by_key(self.que[seq])
+      ```
 
-    2. key for dictionaries
+   - key for dictionaries
 
-    ```
-    def remove_by_key(self, key):
-        if key is None:
-            return False
-        index = self.find_index_by_key(key)
-        if index > -1:
-            self.keys[index] = None
-            ret = self.store[index]
-            self.store[index] = None
-            self.delete_que_by_key(key)
-            return ret
-        else:
-            return False
-    ```
+      ```
+      def remove_by_key(self, key):
+          if key is None:
+              return False
+          index = self.find_index_by_key(key)
+          if index > -1:
+              self.keys[index] = None
+              ret = self.store[index]
+              self.store[index] = None
+              self.delete_que_by_key(key)
+              return ret
+          else:
+              return False
+      ```
 
-    3. value for sets value
+   - value for sets value
 
-    ```
-    def remove_by_value(self, value):
-        for i in range(len(self.store)):
-            if self.store[i] == value:
-                return self.remove_by_key(self.keys[i])
-        return False
-    ```
+      ```
+      def remove_by_value(self, value):
+          for i in range(len(self.store)):
+              if self.store[i] == value:
+                  return self.remove_by_key(self.keys[i])
+          return False
+      ```
 
 4. Access
-    1. size
+   - size
 
     ```
     def get_size(self):
         return self.size
     ```
 
-    2. is member
+   - is member
 
     ```
     def contains_value(self, item):
@@ -192,7 +192,7 @@ Objectives:
         return False
     ```
 
-    3. reverse(if applicable)
+   - reverse(if applicable)
 
 5. Conversion
 
