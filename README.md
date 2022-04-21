@@ -132,7 +132,6 @@ Objectives:
 3. Remove
 
    - index for lists
-
       ```
       def remove_by_seq(self, seq):
           if seq >= self.size:
@@ -141,9 +140,7 @@ Objectives:
               return False
           return self.remove_by_key(self.que[seq])
       ```
-
    - key for dictionaries
-
       ```
       def remove_by_key(self, key):
           if key is None:
@@ -158,9 +155,7 @@ Objectives:
           else:
               return False
       ```
-
    - value for sets value
-
       ```
       def remove_by_value(self, value):
           for i in range(len(self.store)):
@@ -172,14 +167,11 @@ Objectives:
 4. Access
 
    - size
-
       ```
       def get_size(self):
           return self.size
       ```
-
    - is member
-
       ```
       def contains_value(self, item):
           for i in self.store:
@@ -192,7 +184,6 @@ Objectives:
                   return True
           return False
       ```
-
    - reverse(if applicable)
    
 5. Conversion
