@@ -72,10 +72,11 @@ then`S` with • `(concat)` is a monoid if it satisfies the following two axioms
 ### Code
 
 1. Add
+
     ```
     def add(self, key, value):
         self.set(key, value)
-        return self        
+        return self
     ```
 
 2. Set
@@ -202,7 +203,7 @@ then`S` with • `(concat)` is a monoid if it satisfies the following two axioms
                 break
             entry = MyEntry(self.que[i], self.get(self.que[i]))
             ret[i] = entry
-        return ret    
+        return ret
     def from_list(self, tlist):
         self.__init__(len(tlist))
         for entry in tlist:
