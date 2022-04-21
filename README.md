@@ -68,3 +68,196 @@ then`S` with • `(concat)` is a monoid if it satisfies the following two axioms
     2. What should happen, if a user puts elements with **different types**?
 
 ---
+
+### Code
+
+1. Add
+    ```
+    def add(self, key, value):
+        self.set(key, value)
+        return self        
+    ```
+
+2. Set
+
+    ```
+    from threading import Lock
+    def set(self, key, value):
+        if key is None:
+            return False
+        if value is None:
+            return False
+        # if key is None | value is None:
+        #   return  False
+        lock = Lock()
+        lock.acquire()
+        try:
+            old_index = self.find_index_by_key(key)
+            if old_index > -1:
+                # there is a the same key in this dictionary, and replace it
+                self.store[old_index] = value
+                # update the seq of key-value insert
+                self.delete_que_by_key(key)
+                self.top += 1
+                self.que[self.top] = key
+                return True
+            if self.top + 1 >= self.size:
+                # table is full
+                return False
+            index = self.compute_index(key)
+            if self.keys[index] is None:
+                self.keys[index] = key
+                self.store[index] = value
+                self.top += 1
+                self.que[self.top] = key
+                return True
+            else:
+                index += 1
+                while index < len(self.keys):
+                    if self.keys[index] is None:
+                        break
+                    index += 1
+                if index < len(self.keys):
+                    self.keys[index] = key
+                    self.store[index] = value
+                    self.top += 1
+                    self.que[self.top] = key
+                    return True
+        finally:
+            lock.release()
+    ```
+
+3. Remove
+
+    1. index for lists
+
+    ```
+    def remove_by_seq(self, seq):
+        if seq >= self.size:
+            return False
+        if self.que[seq] is None:
+            return False
+        return self.remove_by_key(self.que[seq])
+    ```
+
+    2. key for dictionaries
+
+    ```
+    def remove_by_key(self, key):
+        if key is None:
+            return False
+        index = self.find_index_by_key(key)
+        if index > -1:
+            self.keys[index] = None
+            ret = self.store[index]
+            self.store[index] = None
+            self.delete_que_by_key(key)
+            return ret
+        else:
+            return False
+    ```
+
+    3. value for sets value
+
+    ```
+    def remove_by_value(self, value):
+        for i in range(len(self.store)):
+            if self.store[i] == value:
+                return self.remove_by_key(self.keys[i])
+        return False
+    ```
+
+4. Access
+    1. size
+
+    ```
+    def get_size(self):
+        return self.size
+    ```
+
+    2. is member
+
+    ```
+    def contains_value(self, item):
+        for i in self.store:
+            if i == item:
+                return True
+        return False
+    def contains_key(self, item):
+        for i in self.keys:
+            if i == item:
+                return True
+        return False
+    ```
+
+    3. reverse(if applicable)
+5. Conversion
+
+    ```
+    from Hashmap_mutable import MyEntry
+    def to_list(self):
+        ret = [i for i in range(len(self.que))]
+        for i in range(len(self.que)):
+            if self.que[i] is None:
+                break
+            entry = MyEntry(self.que[i], self.get(self.que[i]))
+            ret[i] = entry
+        return ret    
+    def from_list(self, tlist):
+        self.__init__(len(tlist))
+        for entry in tlist:
+            self.add(entry.key, entry.value)
+        return self
+    ```
+
+6. Filter
+
+    ```
+    def mutFilter_key(self, p):
+        for i in range(len(self.que)):
+            if self.que[i] is None:
+                break
+            if not p(self.que[i]):
+                self.remove_by_key(self.que[i])
+                self.mutFilter_key(p)
+    ```
+
+7. Map
+
+    ```
+    def map_value(self, p):
+        for i in range(len(self.store)):
+            if self.store[i] is not None:
+                self.store[i] = p(self.store[i])
+    ```
+
+8. Reduce
+
+    ```
+    def reduce_value(self, p):
+        ret = 0
+        for i in range(len(self.store)):
+            if self.store[i] is not None:
+                ret = p(ret, self.store[i])
+        return ret
+    ```
+
+9. iter
+
+    ```
+    from Hashmap_mutable import MyEntry
+    def __iter__(self):
+        self.a = 0
+        return self
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        if self.size <= x:
+            raise StopIteration
+        if self.que[x] is None:
+            return None
+        entry = MyEntry(self.que[x], self.get(self.que[x]))
+        return entry
+    ```
+
+---
