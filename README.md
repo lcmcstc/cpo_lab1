@@ -170,30 +170,31 @@ Objectives:
       ```
 
 4. Access
+
    - size
 
-    ```
-    def get_size(self):
-        return self.size
-    ```
+      ```
+      def get_size(self):
+          return self.size
+      ```
 
    - is member
 
-    ```
-    def contains_value(self, item):
-        for i in self.store:
-            if i == item:
-                return True
-        return False
-    def contains_key(self, item):
-        for i in self.keys:
-            if i == item:
-                return True
-        return False
-    ```
+      ```
+      def contains_value(self, item):
+          for i in self.store:
+              if i == item:
+                  return True
+          return False
+      def contains_key(self, item):
+          for i in self.keys:
+              if i == item:
+                  return True
+          return False
+      ```
 
    - reverse(if applicable)
-
+   
 5. Conversion
 
     ```
