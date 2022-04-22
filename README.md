@@ -131,47 +131,55 @@ Objectives:
 
 - Remove
 
-   - index for lists
-      ```
-      def remove_by_seq(self, seq):
-          if seq >= self.size:
-              return False
-          if self.que[seq] is None:
-              return False
-          return self.remove_by_key(self.que[seq])
-      ```
-   - key for dictionaries
-      ```
-      def remove_by_key(self, key):
-          if key is None:
-              return False
-          index = self.find_index_by_key(key)
-          if index > -1:
-              self.keys[index] = None
-              ret = self.store[index]
-              self.store[index] = None
-              self.delete_que_by_key(key)
-              return ret
-          else:
-              return False
-      ```
-   - value for sets value
-      ```
-      def remove_by_value(self, value):
-          for i in range(len(self.store)):
-              if self.store[i] == value:
-                  return self.remove_by_key(self.keys[i])
-          return False
-      ```
+  - index for lists
+
+     ```
+     def remove_by_seq(self, seq):
+         if seq >= self.size:
+             return False
+         if self.que[seq] is None:
+             return False
+         return self.remove_by_key(self.que[seq])
+     ```
+
+  - key for dictionaries
+
+     ```
+     def remove_by_key(self, key):
+         if key is None:
+             return False
+         index = self.find_index_by_key(key)
+         if index > -1:
+             self.keys[index] = None
+             ret = self.store[index]
+             self.store[index] = None
+             self.delete_que_by_key(key)
+             return ret
+         else:
+             return False
+     ```
+
+  - value for sets value
+
+     ```
+     def remove_by_value(self, value):
+         for i in range(len(self.store)):
+             if self.store[i] == value:
+                 return self.remove_by_key(self.keys[i])
+         return False
+     ```
 
 - Access
 
   - size
+
      ```
      def get_size(self):
          return self.size
      ```
+
   - is member
+
      ```
      def contains_value(self, item):
          for i in self.store:
@@ -184,6 +192,7 @@ Objectives:
                  return True
          return False
      ```
+
   - reverse(if applicable)
 
 - Conversion
