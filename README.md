@@ -140,119 +140,119 @@ Objectives:
               return False
           return self.remove_by_key(self.que[seq])
       ```
-     - key for dictionaries
-        ```
-        def remove_by_key(self, key):
-            if key is None:
-                return False
-            index = self.find_index_by_key(key)
-            if index > -1:
-                self.keys[index] = None
-                ret = self.store[index]
-                self.store[index] = None
-                self.delete_que_by_key(key)
-                return ret
-            else:
-                return False
-        ```
-       - value for sets value
-          ```
-          def remove_by_value(self, value):
-              for i in range(len(self.store)):
-                  if self.store[i] == value:
-                      return self.remove_by_key(self.keys[i])
+   - key for dictionaries
+      ```
+      def remove_by_key(self, key):
+          if key is None:
               return False
-          ```
+          index = self.find_index_by_key(key)
+          if index > -1:
+              self.keys[index] = None
+              ret = self.store[index]
+              self.store[index] = None
+              self.delete_que_by_key(key)
+              return ret
+          else:
+              return False
+      ```
+   - value for sets value
+      ```
+      def remove_by_value(self, value):
+          for i in range(len(self.store)):
+              if self.store[i] == value:
+                  return self.remove_by_key(self.keys[i])
+          return False
+      ```
 
-   - Access
+- Access
 
-     - size
-        ```
-        def get_size(self):
-            return self.size
-        ```
-     - is member
-        ```
-        def contains_value(self, item):
-            for i in self.store:
-                if i == item:
-                    return True
-            return False
-        def contains_key(self, item):
-            for i in self.keys:
-                if i == item:
-                    return True
-            return False
-        ```
-     - reverse(if applicable)
+  - size
+     ```
+     def get_size(self):
+         return self.size
+     ```
+  - is member
+     ```
+     def contains_value(self, item):
+         for i in self.store:
+             if i == item:
+                 return True
+         return False
+     def contains_key(self, item):
+         for i in self.keys:
+             if i == item:
+                 return True
+         return False
+     ```
+  - reverse(if applicable)
 
-   - Conversion
+- Conversion
 
-       ```
-       from Hashmap_mutable import MyEntry
-       def to_list(self):
-           ret = [i for i in range(len(self.que))]
-           for i in range(len(self.que)):
-               if self.que[i] is None:
-                   break
-               entry = MyEntry(self.que[i], self.get(self.que[i]))
-               ret[i] = entry
-           return ret
-       def from_list(self, tlist):
-           self.__init__(len(tlist))
-           for entry in tlist:
-               self.add(entry.key, entry.value)
-           return self
-       ```
+    ```
+    from Hashmap_mutable import MyEntry
+    def to_list(self):
+        ret = [i for i in range(len(self.que))]
+        for i in range(len(self.que)):
+            if self.que[i] is None:
+                break
+            entry = MyEntry(self.que[i], self.get(self.que[i]))
+            ret[i] = entry
+        return ret
+    def from_list(self, tlist):
+        self.__init__(len(tlist))
+        for entry in tlist:
+            self.add(entry.key, entry.value)
+        return self
+    ```
 
-   - Filter
+- Filter
 
-       ```
-       def mutFilter_key(self, p):
-           for i in range(len(self.que)):
-               if self.que[i] is None:
-                   break
-               if not p(self.que[i]):
-                   self.remove_by_key(self.que[i])
-                   self.mutFilter_key(p)
-       ```
+    ```
+    def mutFilter_key(self, p):
+        for i in range(len(self.que)):
+            if self.que[i] is None:
+                break
+            if not p(self.que[i]):
+                self.remove_by_key(self.que[i])
+                self.mutFilter_key(p)
+    ```
 
-   - Map
+- Map
 
-       ```
-       def map_value(self, p):
-           for i in range(len(self.store)):
-               if self.store[i] is not None:
-                   self.store[i] = p(self.store[i])
-       ```
+    ```
+    def map_value(self, p):
+        for i in range(len(self.store)):
+            if self.store[i] is not None:
+                self.store[i] = p(self.store[i])
+    ```
 
-   - Reduce
+- Reduce
 
-       ```
-       def reduce_value(self, p):
-           ret = 0
-           for i in range(len(self.store)):
-               if self.store[i] is not None:
-                   ret = p(ret, self.store[i])
-           return ret
-       ```
+    ```
+    def reduce_value(self, p):
+        ret = 0
+        for i in range(len(self.store)):
+            if self.store[i] is not None:
+                ret = p(ret, self.store[i])
+        return ret
+    ```
 
-   - iter
+- iter
 
-       ```
-       from Hashmap_mutable import MyEntry
-       def __iter__(self):
-           self.a = 0
-           return self
-       def __next__(self):
-           x = self.a
-           self.a += 1
-           if self.size <= x:
-               raise StopIteration
-           if self.que[x] is None:
-               return None
-           entry = MyEntry(self.que[x], self.get(self.que[x]))
-           return entry
-       ```
+    ```
+    from Hashmap_mutable import MyEntry
+    def __iter__(self):
+        self.a = 0
+        return self
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        if self.size <= x:
+            raise StopIteration
+        if self.que[x] is None:
+            return None
+        entry = MyEntry(self.que[x], self.get(self.que[x]))
+        return entry
+    ```
 
 ---

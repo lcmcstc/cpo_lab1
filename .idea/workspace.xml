@@ -46,7 +46,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="Hashmap_mutable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -175,6 +175,7 @@
       <workItem from="1650347919548" duration="340000" />
       <workItem from="1650526799178" duration="6546000" />
       <workItem from="1650591797889" duration="111000" />
+      <workItem from="1650610739573" duration="815000" />
     </task>
     <servers />
   </component>
