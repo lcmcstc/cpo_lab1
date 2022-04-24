@@ -88,38 +88,28 @@ class TestDict(unittest.TestCase):
     def test_map(self):
         mydict = MyDictionary()
         mydict.map_value(str)
-        self.assertEqual(mydict.to_list(), [])
-
+        self.assertEqual(mydict.to_list(), {})
         mydict = MyDictionary(3)
-        tlist = [i for i in range(3)]
-        tlist[0] = MyEntry(11, 1)
-        tlist[1] = MyEntry(22, 2)
-        tlist[2] = MyEntry(33, 3)
+        tlist = {11: 1, 22: 2, 33: 3}
         mydict.from_list(tlist)
         tolist_1 = mydict.to_list()
-        tolist_1.__eq__(tlist)
+        self.assertEqual(tolist_1, tlist)
         mydict.map_value(lambda x: x + 1)
         tolist_2 = mydict.to_list()
-        tolist_2.__eq__(tlist)
-        for i in range(3):
-            tolist_2[i].__eq__(tlist[i])
-            print(tolist_2[i])
+        tlist3 = {}
+        for item in tlist.items():
+            tlist3[item[0]] = item[1]+1
+        self.assertEqual(tolist_2, tlist3)
 
     def test_reduce(self):
         myd = MyDictionary()
         str(myd.reduce_value(lambda x, y: x + y))
         self.assertEqual((myd.reduce_value(lambda x, y: x + y)), 0)
         myd = MyDictionary()
-        tlist = [i for i in range(3)]
-        tlist[0] = MyEntry(1, 1)
-        tlist[1] = MyEntry(2, 2)
-        tlist[2] = MyEntry(3, 3)
+        tlist = {1: 1, 2: 2, 3: 3}
         myd.from_list(tlist)
         self.assertEqual(myd.reduce_value(lambda x, y: x + y), 6)
-        test_data = [i for i in range(3)]
-        test_data[0] = MyEntry(1, 'a')
-        test_data[1] = MyEntry(2, 'b')
-        test_data[2] = MyEntry(3, 'c')
+        test_data = {1: 'a', 2: 'b', 3: 'c'}
         myd = MyDictionary(3)
         myd.from_list(test_data)
         myd.print()
@@ -146,7 +136,7 @@ class TestDict(unittest.TestCase):
         myd.from_list(tlist)
         tmp = {}
         for e in myd:
-            tmp.append(e)
+            tmp[e[0]] = e[1]
         self.assertEqual(tlist, tmp)
         self.assertEqual(myd.to_list(), tmp)
 

@@ -33,13 +33,15 @@ class MyIter:
         return self
 
     def __next__(self):
+        entry = [i for i in range(2)]
         x = self.index
         self.index += 1
         if self.data.top < x:
             raise StopIteration
         if self.data.que[x] is None:
             return None
-        entry = MyEntry(self.data.que[x], self.data.get(self.data.que[x]))
+        entry[0] = self.data.que[x]
+        entry[1] = self.data.get(self.data.que[x])
         return entry
 
 
@@ -262,7 +264,7 @@ class MyDictionary:
             raise StopIteration
         if self.que[x] is None:
             return None
-        entry = MyEntry(self.que[x], self.get(self.que[x]))
+        entry = {self.que[x]: self.get(self.que[x])}
         return entry
 
     def next_key(self):
