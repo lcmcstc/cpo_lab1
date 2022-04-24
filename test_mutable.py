@@ -98,7 +98,7 @@ class TestDict(unittest.TestCase):
         tolist_2 = mydict.to_list()
         tlist3 = {}
         for item in tlist.items():
-            tlist3[item[0]] = item[1]+1
+            tlist3[item[0]] = item[1] + 1
         self.assertEqual(tolist_2, tlist3)
 
     def test_reduce(self):
@@ -139,6 +139,32 @@ class TestDict(unittest.TestCase):
             tmp[e[0]] = e[1]
         self.assertEqual(tlist, tmp)
         self.assertEqual(myd.to_list(), tmp)
+
+    def test_reverse(self):
+        tlist = MyDictionary()
+        self.assertEqual(tlist, tlist.empty())
+
+    def test_empty(self):
+        dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
+        test_dict = MyDictionary().from_list(dic)
+        test_dict2 = MyDictionary().from_list(dic)
+        test_dict.reverse()
+        test_dict.print()
+        test_dict2.print()
+        test_dict.reverse()
+        self.assertEqual(test_dict, test_dict2)
+
+    def test_contact(self):
+        test_dict = MyDictionary(2)
+        test_dict.set(0, 'a')
+        test_dict.set(1, 'b')
+        test_dict2 = MyDictionary(2)
+        test_dict2.set(3, 'c')
+        test_dict2.set(4, 'd')
+        test_dict3 = test_dict.contact(test_dict2)
+        dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
+        test_dict4 = test_dict.from_list(dic)
+        self.assertEqual(test_dict3, test_dict4)
 
 
 # Press the green button in the gutter to run the script.

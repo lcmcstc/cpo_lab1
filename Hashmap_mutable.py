@@ -273,3 +273,21 @@ class MyDictionary:
         if self.que[x] is None:
             return None
         return self.que[x]
+
+    def empty(self):
+        return MyDictionary()
+
+    def contact(self, other):
+        ret = MyDictionary(self.size + other.size)
+        for item in self:
+            ret.add(item[0], item[1])
+        for item in other:
+            ret.add(item[0], item[1])
+        return ret
+
+    def reverse(self):
+        for i in range(self.top // 2):
+            t = self.que[i]
+            self.que[i] = self.que[self.top - i]
+            self.que[self.top - i] = t
+        return self

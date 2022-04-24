@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60369bf2-10c0-4aa1-a8ad-e5e47cb09046" name="Changes" comment="fixed the problem about the two iterators on one data structure work in parallel incorrectly.">
-      <change beforePath="$PROJECT_DIR$/.idea/cpo_lab1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cpo_lab1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="60369bf2-10c0-4aa1-a8ad-e5e47cb09046" name="Changes" comment="all fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hashmap_mutable.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hashmap_mutable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_mutable.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_mutable.py" afterDir="false" />
@@ -54,7 +52,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_mutable.TestDict">
+  <component name="RunManager" selected="Python tests.Python tests for test_mutable.TestDict.test_empty">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,7 +89,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_mutable.TestDict.test_from_list" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_mutable.TestDict.test_contact" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -101,11 +99,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_mutable.TestDict.test_from_list&quot;" />
+      <option name="_new_target" value="&quot;test_mutable.TestDict.test_contact&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_mutable.TestDict.test_from_list_to_list_equality" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_mutable.TestDict.test_empty" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -115,11 +113,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_mutable.TestDict.test_from_list_to_list_equality&quot;" />
+      <option name="_new_target" value="&quot;test_mutable.TestDict.test_empty&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_mutable.TestDict.test_python_len_and_list_size_equality" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_mutable.TestDict.test_map" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,11 +127,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_mutable.TestDict.test_python_len_and_list_size_equality&quot;" />
+      <option name="_new_target" value="&quot;test_mutable.TestDict.test_map&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_mutable.TestDict.test_to_list" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_mutable.TestDict.test_reduce" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,17 +141,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_mutable.TestDict.test_to_list&quot;" />
+      <option name="_new_target" value="&quot;test_mutable.TestDict.test_reduce&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_empty" />
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_contact" />
         <item itemvalue="Python tests.Python tests for test_mutable.TestDict" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_to_list" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_from_list" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_python_len_and_list_size_equality" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_from_list_to_list_equality" />
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_map" />
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_reduce" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +173,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650764464674</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="I understand what should I do, I need model the dictionary instead of creating my own one">
+      <created>1650769192774</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650769192774</updated>
+    </task>
+    <task id="LOCAL-00003" summary="all fixed">
+      <created>1650770371277</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650770371277</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +206,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed the problem about the two iterators on one data structure work in parallel incorrectly." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the problem about the two iterators on one data structure work in parallel incorrectly." />
+    <MESSAGE value="I understand what should I do, I need model the dictionary instead of creating my own one" />
+    <MESSAGE value="all fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="all fixed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_mutable.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
