@@ -58,42 +58,32 @@ class TestDict(unittest.TestCase):
         print("-----------over----------")
 
     def test_to_list(self):
-        self.assertEqual(MyDictionary().to_list(), [])
+        self.assertEqual(MyDictionary().to_list(), {})
 
-        test_list_1 = [i for i in range(1)]
-        test_list_1[0] = MyEntry(0, 123)
+        test_list_1 = {0: 123}
         tlist = MyDictionary(1).add(0, 123).to_list()
-        tlist[0].__eq__(test_list_1[0])
+        self.assertEqual(tlist, test_list_1)
 
         test_dict = MyDictionary(2)
         test_dict.set(0, 'a')
         test_dict.set(1, 'b')
-        test_list_2 = [i for i in range(2)]
-        test_list_2[0] = MyEntry("test", 1324)
-        test_list_2[1] = MyEntry(7758, 5.61)
+        test_list_2 = {0: 'a', 1: 'b'}
         tlist = test_dict.to_list()
-        tlist[0].__eq__(test_list_2[0])
-        tlist[1].__eq__(test_list_2[1])
-        # self.assertEqual(test_dict.to_list(), ['a','b'])
+        self.assertEqual(tlist, test_list_2)
 
     def test_from_list(self):
         mydict = MyDictionary()
-        mydict.from_list([])
-        self.assertEqual(mydict.to_list(), [])
-
-        test_list_1 = [i for i in range(1)]
-        test_list_1[0] = MyEntry("test", 1)
+        mydict.from_list({})
+        self.assertEqual(mydict.to_list(), {})
+        test_list_1 = {"test": 1}
         mydict.from_list(test_list_1)
         tlist_1 = mydict.to_list()
-        tlist_1[0].__eq__(test_list_1[0])
+        self.assertEqual(tlist_1, test_list_1)
 
-        test_list_2 = [i for i in range(2)]
-        test_list_2[0] = MyEntry("test", 1)
-        test_list_2[1] = MyEntry(7758, 5.61)
+        test_list_2 = {"test": 1, 7758: 5.61}
         mydict.from_list(test_list_2)
         tlist_2 = mydict.to_list()
-        tlist_2[0].__eq__(test_list_2[0])
-        tlist_2[1].__eq__(test_list_2[1])
+        self.assertEqual(tlist_2, test_list_2)
 
     def test_map(self):
         mydict = MyDictionary()
@@ -116,22 +106,16 @@ class TestDict(unittest.TestCase):
             print(tolist_2[i])
 
     def test_reduce(self):
-        # sum of empty list
         myd = MyDictionary()
         str(myd.reduce_value(lambda x, y: x + y))
         self.assertEqual((myd.reduce_value(lambda x, y: x + y)), 0)
-
-        # sum of list
         myd = MyDictionary()
         tlist = [i for i in range(3)]
         tlist[0] = MyEntry(1, 1)
         tlist[1] = MyEntry(2, 2)
         tlist[2] = MyEntry(3, 3)
         myd.from_list(tlist)
-        # print("sum:"+ str(myd.reduce_value(lambda x, y: x + y)))
         self.assertEqual(myd.reduce_value(lambda x, y: x + y), 6)
-
-        # size
         test_data = [i for i in range(3)]
         test_data[0] = MyEntry(1, 'a')
         test_data[1] = MyEntry(2, 'b')
@@ -141,27 +125,26 @@ class TestDict(unittest.TestCase):
         myd.print()
         myd1 = MyDictionary(3)
         myd1.from_list(tlist)
-        # print(str(myd.reduce_value(lambda x, _: x + 1)))
-        # self.assertEqual(myd.reduce_valueç, myd.get_size())
-        # print(myd1.reduce_value(lambda x, _: x + 1))
         self.assertEqual(myd1.reduce_value(lambda x, _: x + 1), myd1.size)
 
-    # @given(st.lists(st.dictionaries(keys=st.integers(),values=st.integers())))
-    # def test_from_list_to_list_equality(self, a):
-    #     # print(a)
-    #     myd = MyDictionary(len(a))
-    #     myd.from_list(a)
-    #     b = myd.to_list()
-    #     self.assertEqual(a, b)
+    @given(st.dictionaries(st.integers(), st.integers()))
+    def test_from_list_to_list_equality(self, a):
+        myd = MyDictionary(len(a))
+        myd.from_list(a)
+        b = myd.to_list()
+        self.assertEqual(a, b)
+
+    @given(st.dictionaries(st.integers(), st.integers()))
+    def test_python_len_and_list_size_equality(self, a):
+        myd = MyDictionary(len(a))
+        myd.from_list(a)
+        self.assertEqual(myd.size, len(a))
 
     def test_iter(self):
-        tlist = [i for i in range(3)]
-        tlist[0] = MyEntry(1, 1)
-        tlist[1] = MyEntry(2, 2)
-        tlist[2] = MyEntry(3, 3)
+        tlist = {1: 1, 2: 2, 3: 3}
         myd = MyDictionary()
         myd.from_list(tlist)
-        tmp = []
+        tmp = {}
         for e in myd:
             tmp.append(e)
         self.assertEqual(tlist, tmp)

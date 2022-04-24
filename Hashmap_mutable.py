@@ -6,6 +6,7 @@ from threading import Lock
 
 
 class MyEntry:
+
     def __init__(self, key, value):
         self.key = key
         self.value = value
@@ -72,18 +73,18 @@ class MyDictionary:
         return True
 
     def to_list(self):
-        ret = [i for i in range(len(self.que))]
+        ret = {}
         for i in range(len(self.que)):
             if self.que[i] is None:
                 break
-            entry = MyEntry(self.que[i], self.get(self.que[i]))
-            ret[i] = entry
+            # entry = MyEntry(self.que[i], self.get(self.que[i]))
+            ret[self.que[i]] = self.get(self.que[i])
         return ret
 
     def from_list(self, tlist):
         self.__init__(len(tlist))
-        for entry in tlist:
-            self.add(entry.key, entry.value)
+        for entry in tlist.items():
+            self.add(entry[0], entry[1])
         return self
 
     # model hash(modular arithmetic) :: f( key ) = key mod p ( p ≤ m )
