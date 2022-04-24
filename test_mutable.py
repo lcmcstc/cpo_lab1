@@ -7,8 +7,8 @@ from Hashmap_mutable import *
 class TestDict(unittest.TestCase):
     def test_size(self):
         print("start testing Dict.size")
-        self.assertEqual(MyDictionary(3).size, 3)
-        self.assertEqual(MyDictionary(0).size, 0)
+        self.assertEqual(MyDictionary(3).dic_size, 3)
+        self.assertEqual(MyDictionary(0).dic_size, 0)
         print("-----------over----------")
 
     def test_add(self):
@@ -34,31 +34,23 @@ class TestDict(unittest.TestCase):
         for i in range(5):
             mydict.set(2 * i, i)
         mydict.print()
-        print("Dict.remove_by_seq(2),delete by index")
-        print("Deleted value =", mydict.remove_by_seq(2))
         print("Dict.remove_by_key(2),delete by key")
-        print("Deleted value =", mydict.remove_by_key(2))
-        print("Dict.remove_by_value(3)，delete by value")
-        print("Deleted value =", mydict.remove_by_value(3))
+        print("Deleted value =", mydict.remove(2))
         mydict.print()
         print("-----------over----------")
 
     def test_access(self):
-        print("start testing Dict.Access")
         mydict = MyDictionary(5)
         for i in range(5):
             mydict.set(2 * i, i)
-        mydict.print()
-        print("Dict.size()")
-        print(mydict.get_size())
-        print("Dict.member()==contains_value(2)")
-        print(mydict.contains_value(2))
-        print("Dict.member()==contains_key(3)")
-        print(mydict.contains_key(3))
-        print("-----------over----------")
+        dic = {}
+        for i in range(5):
+            dic[2 * i] = i
+        for item in dic.items():
+            self.assertTrue(mydict.__contains__(item))
 
     def test_to_list(self):
-        self.assertEqual(MyDictionary().to_list(), {})
+        self.assertDictEqual(MyDictionary().to_list(), {})
 
         test_list_1 = {0: 123}
         tlist = MyDictionary(1).add(0, 123).to_list()
@@ -87,14 +79,14 @@ class TestDict(unittest.TestCase):
 
     def test_map(self):
         mydict = MyDictionary()
-        mydict.map_value(str)
+        mydict.map(str)
         self.assertEqual(mydict.to_list(), {})
         mydict = MyDictionary(3)
         tlist = {11: 1, 22: 2, 33: 3}
         mydict.from_list(tlist)
         tolist_1 = mydict.to_list()
         self.assertEqual(tolist_1, tlist)
-        mydict.map_value(lambda x: x + 1)
+        mydict.map(lambda x: x + 1)
         tolist_2 = mydict.to_list()
         tlist3 = {}
         for item in tlist.items():
@@ -103,19 +95,19 @@ class TestDict(unittest.TestCase):
 
     def test_reduce(self):
         myd = MyDictionary()
-        str(myd.reduce_value(lambda x, y: x + y))
-        self.assertEqual((myd.reduce_value(lambda x, y: x + y)), 0)
+        str(myd.reduce(lambda x, y: x + y))
+        self.assertEqual((myd.reduce(lambda x, y: x + y)), 0)
         myd = MyDictionary()
         tlist = {1: 1, 2: 2, 3: 3}
         myd.from_list(tlist)
-        self.assertEqual(myd.reduce_value(lambda x, y: x + y), 6)
+        self.assertEqual(myd.reduce(lambda x, y: x + y), 6)
         test_data = {1: 'a', 2: 'b', 3: 'c'}
         myd = MyDictionary(3)
         myd.from_list(test_data)
         myd.print()
         myd1 = MyDictionary(3)
         myd1.from_list(tlist)
-        self.assertEqual(myd1.reduce_value(lambda x, _: x + 1), myd1.size)
+        self.assertEqual(myd1.reduce(lambda x, _: x + 1), myd1.dic_size)
 
     @given(st.dictionaries(st.integers(), st.integers()))
     def test_from_list_to_list_equality(self, a):
@@ -128,7 +120,7 @@ class TestDict(unittest.TestCase):
     def test_python_len_and_list_size_equality(self, a):
         myd = MyDictionary(len(a))
         myd.from_list(a)
-        self.assertEqual(myd.size, len(a))
+        self.assertEqual(myd.dic_size, len(a))
 
     def test_iter(self):
         tlist = {1: 1, 2: 2, 3: 3}

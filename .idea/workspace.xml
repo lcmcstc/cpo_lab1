@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60369bf2-10c0-4aa1-a8ad-e5e47cb09046" name="Changes" comment="all fixed">
+    <list default="true" id="60369bf2-10c0-4aa1-a8ad-e5e47cb09046" name="Changes" comment="add reverse、empty、contact">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hashmap_mutable.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hashmap_mutable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_mutable.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_mutable.py" afterDir="false" />
@@ -52,7 +52,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_mutable.TestDict.test_empty">
+  <component name="RunManager" selected="Python tests.Python tests for test_mutable.TestDict">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -89,6 +89,20 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_mutable.TestDict.test_access" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="cpo_lab1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_mutable.TestDict.test_access&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_mutable.TestDict.test_contact" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,7 +131,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_mutable.TestDict.test_map" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_mutable.TestDict.test_to_list" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="cpo_lab1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -127,31 +141,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_mutable.TestDict.test_map&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_mutable.TestDict.test_reduce" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="cpo_lab1" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_mutable.TestDict.test_reduce&quot;" />
+      <option name="_new_target" value="&quot;test_mutable.TestDict.test_to_list&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict" />
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_to_list" />
+        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_access" />
         <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_empty" />
         <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_contact" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_map" />
-        <item itemvalue="Python tests.Python tests for test_mutable.TestDict.test_reduce" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650770371277</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add reverse、empty、contact">
+      <created>1650781217021</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650781217021</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,14 +215,15 @@
     <MESSAGE value="fixed the problem about the two iterators on one data structure work in parallel incorrectly." />
     <MESSAGE value="I understand what should I do, I need model the dictionary instead of creating my own one" />
     <MESSAGE value="all fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="all fixed" />
+    <MESSAGE value="add reverse、empty、contact" />
+    <option name="LAST_COMMIT_MESSAGE" value="add reverse、empty、contact" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test_mutable.py</url>
-          <line>160</line>
+          <line>158</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

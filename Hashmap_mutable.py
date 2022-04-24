@@ -48,7 +48,7 @@ class MyIter:
 class MyDictionary:
 
     def __init__(self, size=0):
-        self.size = size
+        self.dic_size = size
         self.store = [i for i in range(2 * size)]
         self.keys = [i for i in range(2 * size)]
         # que is used to record the seq of inserts
@@ -94,16 +94,17 @@ class MyDictionary:
         hash_value = hash(key)
         if hash_value < 0:
             hash_value = hash_value * -1
-        return hash_value % self.size
+        return hash_value % self.dic_size
 
+    # to update the que
     def delete_que_by_key(self, key):
         t = 0
-        for i in range(self.size):
+        for i in range(self.dic_size):
             if self.que[i] == key:
                 t += 1
             if self.que[i] is None:
                 break
-            if i + 1 >= self.size:
+            if i + 1 >= self.dic_size:
                 self.que[i] = None
                 break
             self.que[i] = self.que[i + t]
@@ -112,7 +113,7 @@ class MyDictionary:
 
     # transform key to index
     # open address
-    def find_index_by_key(self, key):
+    def find(self, key):
         index = self.compute_index(key)
         if self.keys[index] == key:
             return index
@@ -141,7 +142,7 @@ class MyDictionary:
         lock = Lock()
         lock.acquire()
         try:
-            old_index = self.find_index_by_key(key)
+            old_index = self.find(key)
             if old_index > -1:
                 # there is a the same key in this dictionary, and replace it
                 self.store[old_index] = value
@@ -150,7 +151,7 @@ class MyDictionary:
                 self.top += 1
                 self.que[self.top] = key
                 return True
-            if self.top + 1 >= self.size:
+            if self.top + 1 >= self.dic_size:
                 # table is full
                 return False
             index = self.compute_index(key)
@@ -178,7 +179,7 @@ class MyDictionary:
     def get(self, key):
         if key is None:
             return False
-        index = self.find_index_by_key(key)
+        index = self.find(key)
         if index > -1:
             return self.store[index]
         else:
@@ -188,10 +189,10 @@ class MyDictionary:
         for i in self.que:
             print(str(i) + ":" + str(self.get(i)))
 
-    def remove_by_key(self, key):
+    def remove(self, key):
         if key is None:
             return False
-        index = self.find_index_by_key(key)
+        index = self.find(key)
         if index > -1:
             self.keys[index] = None
             ret = self.store[index]
@@ -201,21 +202,29 @@ class MyDictionary:
         else:
             return False
 
-    def remove_by_seq(self, seq):
-        if seq >= self.size:
-            return False
-        if self.que[seq] is None:
-            return False
-        return self.remove_by_key(self.que[seq])
+    # def remove_by_seq(self, seq):
+    #     if seq >= self.dic_size:
+    #         return False
+    #     if self.que[seq] is None:
+    #         return False
+    #     return self.remove(self.que[seq])
 
-    def remove_by_value(self, value):
-        for i in range(len(self.store)):
-            if self.store[i] == value:
-                return self.remove_by_key(self.keys[i])
-        return False
+    # def remove_by_value(self, value):
+    #     for i in range(len(self.store)):
+    #         if self.store[i] == value:
+    #             return self.remove(self.keys[i])
+    #     return False
 
-    def get_size(self):
-        return self.size
+    def size(self):
+        return self.dic_size
+
+    def __contains__(self, item):
+        a = self.contains_key(item[0])
+        b = self.contains_value(item[1])
+        if a & b:
+            return True
+        else:
+            return False
 
     def contains_value(self, item):
         for i in self.store:
@@ -229,29 +238,25 @@ class MyDictionary:
                 return True
         return False
 
-    def mutFilter_key(self, p):
+    def filter(self, p):
         for i in range(len(self.que)):
             if self.que[i] is None:
                 break
             if not p(self.que[i]):
-                self.remove_by_key(self.que[i])
-                self.mutFilter_key(p)
+                self.remove(self.que[i])
+                self.filter(p)
 
-    def map_value(self, p):
+    def map(self, p):
         for i in range(len(self.store)):
             if self.store[i] is not None:
                 self.store[i] = p(self.store[i])
 
-    def reduce_value(self, p):
+    def reduce(self, p):
         ret = 0
         for i in range(len(self.store)):
             if self.store[i] is not None:
                 ret = p(ret, self.store[i])
         return ret
-
-    def iter_key(self):
-        self.a = 0
-        return self
 
     def __iter__(self):
         self.a = 0
@@ -260,25 +265,24 @@ class MyDictionary:
     def __next__(self):
         x = self.a
         self.a += 1
-        if self.size <= x:
+        if self.dic_size <= x:
             raise StopIteration
         if self.que[x] is None:
             return None
         entry = {self.que[x]: self.get(self.que[x])}
         return entry
 
-    def next_key(self):
-        x = self.a
-        self.a += 1
-        if self.que[x] is None:
-            return None
-        return self.que[x]
-
     def empty(self):
-        return MyDictionary()
+        self.dic_size = 0
+        self.store = [i for i in range(0)]
+        self.keys = [i for i in range(0)]
+        # que is used to record the seq of inserts
+        self.que = [i for i in range(0)]
+        self.top = -1
+        return self
 
     def contact(self, other):
-        ret = MyDictionary(self.size + other.size)
+        ret = MyDictionary(self.dic_size + other.dic_size)
         for item in self:
             ret.add(item[0], item[1])
         for item in other:
