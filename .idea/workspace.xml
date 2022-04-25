@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60369bf2-10c0-4aa1-a8ad-e5e47cb09046" name="Changes" comment="add reverse、empty、contact">
+      <change beforePath="$PROJECT_DIR$/.idea/cpo_lab1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cpo_lab1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +49,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -157,6 +165,7 @@
       <workItem from="1649856614691" duration="8904000" />
       <workItem from="1649906714753" duration="8313000" />
       <workItem from="1650804749325" duration="341000" />
+      <workItem from="1650805121659" duration="6770000" />
     </task>
     <task id="LOCAL-00001" summary="fixed the problem about the two iterators on one data structure work in parallel incorrectly.">
       <created>1650764464674</created>
