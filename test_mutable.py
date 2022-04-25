@@ -6,38 +6,41 @@ from Hashmap_mutable import *
 
 class TestDict(unittest.TestCase):
     def test_size(self):
-        print("start testing Dict.size")
         self.assertEqual(MyDictionary(3).dic_size, 3)
         self.assertEqual(MyDictionary(0).dic_size, 0)
-        print("-----------over----------")
 
     def test_add(self):
-        print("start testing Dict.add()")
-        mydict = MyDictionary(5)
-        for i in range(10):
+        test_dict = MyDictionary(2)
+        test_dict.set(0, 0)
+        test_dict.set(1, 1)
+        mydict = MyDictionary(2)
+        for i in range(2):
             mydict.add(i, i)
-        mydict.print()
-        print("-----------over----------")
+        self.assertEqual(mydict,test_dict)
 
     def test_set(self):
-        print("Start testing Set")
+        test_dict = MyDictionary(5)
+        test_dict.set(9, 3)
+        test_dict.set(0, 0)
+        test_dict.set(1, 1)
+        test_dict.set(2, 2)
         mydict = MyDictionary(5)
         mydict.set(9, 3)
         for i in range(3):
             mydict.set(i, i)
-        mydict.print()
-        print("-----------over----------")
+        self.assertEqual(mydict, test_dict)
 
     def test_remove(self):
-        print("Start testing Remove")
+        test_dict = MyDictionary(5)
+        test_dict.set(0, 0)
+        test_dict.set(4, 2)
+        test_dict.set(6, 3)
+        test_dict.set(8, 4)
         mydict = MyDictionary(5)
         for i in range(5):
             mydict.set(2 * i, i)
-        mydict.print()
-        print("Dict.remove_by_key(2),delete by key")
-        print("Deleted value =", mydict.remove(2))
-        mydict.print()
-        print("-----------over----------")
+        mydict.remove(2)
+        self.assertEqual(mydict, test_dict)
 
     def test_access(self):
         mydict = MyDictionary(5)
