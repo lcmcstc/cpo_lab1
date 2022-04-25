@@ -16,7 +16,7 @@ class TestDict(unittest.TestCase):
         mydict = MyDictionary(2)
         for i in range(2):
             mydict.add(i, i)
-        self.assertEqual(mydict,test_dict)
+        self.assertEqual(mydict, test_dict)
 
     def test_set(self):
         test_dict = MyDictionary(5)
