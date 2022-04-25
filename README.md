@@ -32,7 +32,7 @@ Dictionary based on hash-map, open address
 
 ## Project structure
 
-- `Hashmap_mutable.py` -- implementation of `Dictionary` class with `add` and `remove` etc.
+- `Hashmap_mutable.py` -- implementation of `Dictionary` class with `add` etc.
 - `test_mutable.py` -- unit and PBT tests for `Dictionary`.
 
 ## Features
@@ -75,17 +75,17 @@ Dictionary based on hash-map, open address
 - 24.04.2022 - 46
   - fix module naming and rewrite the `contains` function
 - 24.04.2022 - 45
-  - clean the repository from unnecessary artefacts, like `.hypothesis` work data.
+  - clean the repository from unnecessary artefacts, like `.hypothesis` work data
 - 24.04.2022 - 44
   - add `reverse`、`empty`、`contact`
 - 24.04.2022 - 43
   - fixed `__next__` feature
-- 24.04.2022 - 42 
+- 24.04.2022 - 42
   - model the dictionary instead of creating my own one
 - 24.04.2022 - 41
-  - fixed the problem about the two iterators on one data structure work in parallel incorrectly
+  - fixed `the two iterators on one data structure work in parallel incorrectly`
 - 22.04.2022 - 38-40
-  - Update README.md and fix file format issues 
+  - Update README.md and fix file format issues
 - 21.04.2022 - 30-37
   - Update README.md with file format issues
 - 19.04.2022 - 18-29
@@ -105,4 +105,4 @@ Dictionary based on hash-map, open address
 
 - Create `Myentry` class to implement key-value pairs.
 - Create `MyIter` class to implement `__iter__` and `__next__`.
-- Create `MyDictionary` class to implement the dictionary based on hash-map, open address
+- Create `MyDictionary` class to implement the dictionary.
