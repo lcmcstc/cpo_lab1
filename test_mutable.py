@@ -13,11 +13,10 @@ class TestDict(unittest.TestCase):
         test_dict = MyDictionary(2)
         test_dict.set(0, 0)
         test_dict.set(1, 1)
-        dic={0:0,1:1}
-        mydict=MyDictionary()
+        dic = {0: 0, 1: 1}
+        mydict = MyDictionary()
         mydict.from_list(dic)
         self.assertEqual(mydict, test_dict)
-
 
     def test_set(self):
         test_dict = MyDictionary(5)
@@ -140,26 +139,26 @@ class TestDict(unittest.TestCase):
         tlist = MyDictionary()
         self.assertEqual(tlist, tlist.empty())
 
-    def test_empty(self):
-        dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
-        test_dict = MyDictionary().from_list(dic)
+    @given(st.dictionaries(st.integers(), st.integers()))
+    def test_empty(self, a):
+        dic = {}
+        test_dict = MyDictionary().from_list(a)
         test_dict2 = MyDictionary().from_list(dic)
-        test_dict.reverse()
-        test_dict.print()
-        test_dict2.print()
-        test_dict.reverse()
-        self.assertEqual(test_dict, test_dict2)
+        self.assertEqual(test_dict.empty(), test_dict2)
 
-    def test_contact(self):
-        test_dict = MyDictionary(2)
-        test_dict.set(0, 'a')
-        test_dict.set(1, 'b')
-        test_dict2 = MyDictionary(2)
-        test_dict2.set(3, 'c')
-        test_dict2.set(4, 'd')
-        test_dict3 = test_dict.contact(test_dict2)
+    @given(st.dictionaries(st.integers(), st.characters()))
+    def test_contact(self, a):
+        test_dict = MyDictionary()
+        test_dict2 = MyDictionary()
         dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
-        test_dict4 = test_dict.from_list(dic)
+        test_dict = test_dict.from_list(dic)
+        test_dict2 = test_dict2.from_list(a)
+        test_dict3 = MyDictionary(test_dict.size()+test_dict2.size())
+        for e in test_dict:
+            test_dict3.add(e[0], e[1])
+        for e in test_dict2:
+            test_dict3.add(e[0], e[1])
+        test_dict4 = test_dict.contact(test_dict2)
         self.assertEqual(test_dict3, test_dict4)
 
 

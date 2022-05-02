@@ -202,7 +202,6 @@ class MyDictionary:
         else:
             return False
 
-
     def size(self):
         return self.dic_size
 
@@ -249,7 +248,6 @@ class MyDictionary:
     def __iter__(self):
         self.a = 0
         return MyIter(self)
-
 
     def empty(self):
         self.dic_size = 0
