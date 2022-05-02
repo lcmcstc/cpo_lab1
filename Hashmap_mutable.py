@@ -202,18 +202,6 @@ class MyDictionary:
         else:
             return False
 
-    # def remove_by_seq(self, seq):
-    #     if seq >= self.dic_size:
-    #         return False
-    #     if self.que[seq] is None:
-    #         return False
-    #     return self.remove(self.que[seq])
-
-    # def remove_by_value(self, value):
-    #     for i in range(len(self.store)):
-    #         if self.store[i] == value:
-    #             return self.remove(self.keys[i])
-    #     return False
 
     def size(self):
         return self.dic_size
@@ -262,15 +250,6 @@ class MyDictionary:
         self.a = 0
         return MyIter(self)
 
-    def __next__(self):
-        x = self.a
-        self.a += 1
-        if self.dic_size <= x:
-            raise StopIteration
-        if self.que[x] is None:
-            return None
-        entry = {self.que[x]: self.get(self.que[x])}
-        return entry
 
     def empty(self):
         self.dic_size = 0
