@@ -135,8 +135,9 @@ class TestDict(unittest.TestCase):
         md_c = MyDictionary().from_list(c)
         r_one = md_a.contact(md_b).contact(md_c)
         r_two = md_b.contact(md_c).contact(md_a)
-        # the dictionary we implemented is an ordered dictionary (because it implements deletion according to
-        # insertion order), which may not satisfy the monoid property
+        # the dictionary we implemented is an ordered dictionary
+        # (because it implements deletion according to insertion order)
+        # , which may not satisfy the monoid property
         for item in r_one:
             self.assertTrue(r_two.contains_key(item[0]))
 
