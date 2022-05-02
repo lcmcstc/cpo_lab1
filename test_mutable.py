@@ -143,8 +143,12 @@ class TestDict(unittest.TestCase):
         # for item in r_one:
         #     self.assertTrue(r_two.contains_key(item[0]))
         # so we implemented a+{}=a   {}+a=a;
-        self.assertEqual(MyDictionary().from_list(a).contact(MyDictionary().from_list({})), MyDictionary().from_list(a))
-        self.assertEqual(MyDictionary().from_list({}).contact(MyDictionary().from_list(a)), MyDictionary().from_list(a))
+        self.assertEqual(MyDictionary().from_list(a).
+                         contact(MyDictionary().from_list({})),
+                         MyDictionary().from_list(a))
+        self.assertEqual(MyDictionary().from_list({}).
+                         contact(MyDictionary().from_list(a)),
+                         MyDictionary().from_list(a))
 
     def test_iter(self):
         tlist = {1: 1, 2: 2, 3: 3}
