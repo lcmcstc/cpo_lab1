@@ -50,7 +50,7 @@ class TestDict(unittest.TestCase):
         for i in range(5):
             dic[2 * i] = i
         for item in dic.items():
-            self.assertTrue(mydict.__contains__(item))
+            self.assertTrue(mydict.member(item))
 
     def test_to_list(self):
         self.assertDictEqual(MyDictionary().to_list(), {})

@@ -205,7 +205,7 @@ class MyDictionary:
     def size(self):
         return self.dic_size
 
-    def __contains__(self, item):
+    def member(self, item):
         a = self.contains_key(item[0])
         b = self.contains_value(item[1])
         if a & b:
