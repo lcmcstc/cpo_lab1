@@ -75,7 +75,7 @@ Dictionary based on hash-map, open address
 - 02.05.2022 - 54
   - remove `__next__` and rewrite `test_add`
 - 24.04.2022 - 48-53
-  - Update README.md and unit tests should be automatically 
+  - Update README.md and unit tests should be automatically
 - 24.04.2022 - 47
   - add .gitignore
 - 24.04.2022 - 46
