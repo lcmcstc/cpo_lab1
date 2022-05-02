@@ -125,24 +125,19 @@ class TestDict(unittest.TestCase):
         myd.from_list(a)
         self.assertEqual(myd.dic_size, len(a))
 
-    @given(a=st.dictionaries(st.integers(), st.integers()))
-    def test_monoid_properties(self, a):
-        # (a+b)+c=a+(b+c) can't success
-        # the dictionary we implemented is an ordered dictionary
-        # and an insertable dictionary.
-        # Different insertion order will result in different order
-        # of key-value pairs in the
-        # dictionary. Different insertion
-        # order of the same key will result in different
-        # values of the key
-        # md_a = MyDictionary().from_list(a)
-        # md_b = MyDictionary().from_list(b)
-        # md_c = MyDictionary().from_list(c)
-        # r_one = md_a.contact(md_b).contact(md_c)
-        # r_two = md_b.contact(md_c).contact(md_a)
-        # for item in r_one:
-        #     self.assertTrue(r_two.contains_key(item[0]))
-        # so we implemented a+{}=a   {}+a=a;
+    @given(a=st.dictionaries(st.integers(), st.integers()),
+           b=st.dictionaries(st.integers(), st.integers()),
+           c=st.dictionaries(st.integers(), st.integers()))
+    def test_monoid_properties(self, a, b, c):
+        # (a+b)+c=a+(b+c)
+        md_a = MyDictionary().from_list(a)
+        md_b = MyDictionary().from_list(b)
+        md_c = MyDictionary().from_list(c)
+        r_one = md_a.contact(md_b).contact(md_c)
+        r_two = md_a.contact(md_b.contact(md_c))
+        self.assertEqual(r_two, r_one)
+
+        # a+{}=a,{}+a=a
         self.assertEqual(MyDictionary().from_list(a).
                          contact(MyDictionary().from_list({})),
                          MyDictionary().from_list(a))
