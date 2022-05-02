@@ -125,6 +125,21 @@ class TestDict(unittest.TestCase):
         myd.from_list(a)
         self.assertEqual(myd.dic_size, len(a))
 
+    @given(a=st.dictionaries(st.integers(), st.integers()),
+           b=st.dictionaries(st.integers(), st.integers()),
+           c=st.dictionaries(st.integers(), st.integers()))
+    def test_monoid_properties(self, a, b, c):
+        # (a+b)+c=a+(b+c)
+        md_a = MyDictionary().from_list(a)
+        md_b = MyDictionary().from_list(b)
+        md_c = MyDictionary().from_list(c)
+        r_one = md_a.contact(md_b).contact(md_c)
+        r_two = md_b.contact(md_c).contact(md_a)
+        # the dictionary we implemented is an ordered dictionary (because it implements deletion according to
+        # insertion order), which may not satisfy the monoid property
+        for item in r_one:
+            self.assertTrue(r_two.contains_key(item[0]))
+
     def test_iter(self):
         tlist = {1: 1, 2: 2, 3: 3}
         myd = MyDictionary()
@@ -153,7 +168,7 @@ class TestDict(unittest.TestCase):
         dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
         test_dict = test_dict.from_list(dic)
         test_dict2 = test_dict2.from_list(a)
-        test_dict3 = MyDictionary(test_dict.size()+test_dict2.size())
+        test_dict3 = MyDictionary(test_dict.size() + test_dict2.size())
         for e in test_dict:
             test_dict3.add(e[0], e[1])
         for e in test_dict2:
