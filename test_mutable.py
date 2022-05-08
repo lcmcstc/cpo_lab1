@@ -5,10 +5,6 @@ from Hashmap_mutable import *
 
 
 class TestDict(unittest.TestCase):
-    def test_size(self):
-        self.assertEqual(MyDictionary(3).dic_size, 3)
-        self.assertEqual(MyDictionary(0).dic_size, 0)
-
     def test_add(self):
         test_dict = MyDictionary(2)
         test_dict.set(0, 0)
@@ -16,18 +12,6 @@ class TestDict(unittest.TestCase):
         dic = {0: 0, 1: 1}
         mydict = MyDictionary()
         mydict.from_list(dic)
-        self.assertEqual(mydict, test_dict)
-
-    def test_set(self):
-        test_dict = MyDictionary(5)
-        test_dict.set(9, 3)
-        test_dict.set(0, 0)
-        test_dict.set(1, 1)
-        test_dict.set(2, 2)
-        mydict = MyDictionary(5)
-        mydict.set(9, 3)
-        for i in range(3):
-            mydict.set(i, i)
         self.assertEqual(mydict, test_dict)
 
     def test_remove(self):
@@ -42,43 +26,27 @@ class TestDict(unittest.TestCase):
         mydict.remove(2)
         self.assertEqual(mydict, test_dict)
 
-    def test_access(self):
-        mydict = MyDictionary(5)
-        for i in range(5):
-            mydict.set(2 * i, i)
-        dic = {}
-        for i in range(5):
-            dic[2 * i] = i
-        for item in dic.items():
-            self.assertTrue(mydict.member(item))
+    def test_size(self):
+        self.assertEqual(MyDictionary(3).dic_size, 3)
+        self.assertEqual(MyDictionary(0).dic_size, 0)
 
-    def test_to_list(self):
-        self.assertDictEqual(MyDictionary().to_list(), {})
+    def test_find(self):
+        myd = MyDictionary(3)
+        myd.add(1, 1)
+        myd.add(2, 2)
+        myd.add(3, 3)
+        self.assertEqual(myd.get(1), 1)
+        self.assertEqual(myd.get(2), 2)
+        self.assertEqual(myd.get(3), 3)
 
-        test_list_1 = {0: 123}
-        tlist = MyDictionary(1).add(0, 123).to_list()
-        self.assertEqual(tlist, test_list_1)
-
-        test_dict = MyDictionary(2)
-        test_dict.set(0, 'a')
-        test_dict.set(1, 'b')
-        test_list_2 = {0: 'a', 1: 'b'}
-        tlist = test_dict.to_list()
-        self.assertEqual(tlist, test_list_2)
-
-    def test_from_list(self):
-        mydict = MyDictionary()
-        mydict.from_list({})
-        self.assertEqual(mydict.to_list(), {})
-        test_list_1 = {"test": 1}
-        mydict.from_list(test_list_1)
-        tlist_1 = mydict.to_list()
-        self.assertEqual(tlist_1, test_list_1)
-
-        test_list_2 = {"test": 1, 7758: 5.61}
-        mydict.from_list(test_list_2)
-        tlist_2 = mydict.to_list()
-        self.assertEqual(tlist_2, test_list_2)
+    def test_filter(self):
+        myd = MyDictionary(4)
+        myd.add(1, 1)
+        myd.add(2, 2)
+        myd.add(3, 3)
+        myd.add(4, 4)
+        myd.filter(lambda e: e % 2 == 1)
+        self.assertEqual(myd.to_list(), {1: 1, 3: 3})
 
     def test_map(self):
         mydict = MyDictionary()
@@ -113,8 +81,59 @@ class TestDict(unittest.TestCase):
         self.assertEqual(myd1.reduce(lambda x, _: x + 1), myd1.dic_size)
 
     @given(st.dictionaries(st.integers(), st.integers()))
+    def test_empty(self, a):
+        dic = {}
+        test_dict = MyDictionary().from_list(a)
+        test_dict2 = MyDictionary().from_list(dic)
+        self.assertEqual(test_dict.empty(), test_dict2)
+
+    @given(st.dictionaries(st.integers(), st.characters()))
+    def test_concat(self, a):
+        test_dict = MyDictionary()
+        test_dict2 = MyDictionary()
+        dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
+        test_dict = test_dict.from_list(dic)
+        test_dict2 = test_dict2.from_list(a)
+        test_dict3 = MyDictionary(test_dict.size() + test_dict2.size())
+        for e in test_dict:
+            test_dict3.add(e[0], e[1])
+        for e in test_dict2:
+            test_dict3.add(e[0], e[1])
+        test_dict4 = test_dict.concat(test_dict2)
+        self.assertEqual(test_dict3, test_dict4)
+
+    def test_to_list(self):
+        self.assertDictEqual(MyDictionary().to_list(), {})
+
+        test_list_1 = {0: 123}
+        tlist = MyDictionary(1).add(0, 123).to_list()
+        self.assertEqual(tlist, test_list_1)
+
+        test_dict = MyDictionary(2)
+        test_dict.set(0, 'a')
+        test_dict.set(1, 'b')
+        test_list_2 = {0: 'a', 1: 'b'}
+        tlist = test_dict.to_list()
+        self.assertEqual(tlist, test_list_2)
+
+    def test_from_list(self):
+        mydict = MyDictionary()
+        mydict.from_list({})
+        self.assertEqual(mydict.to_list(), {})
+        test_list_1 = {"test": 1}
+        mydict.from_list(test_list_1)
+        tlist_1 = mydict.to_list()
+        self.assertEqual(tlist_1, test_list_1)
+
+        test_list_2 = {"test": 1, 7758: 5.61}
+        mydict.from_list(test_list_2)
+        tlist_2 = mydict.to_list()
+        self.assertEqual(tlist_2, test_list_2)
+
+    @given(st.dictionaries(st.integers(), st.integers()))
     def test_from_list_to_list_equality(self, a):
         myd = MyDictionary(len(a))
+
         myd.from_list(a)
         b = myd.to_list()
         self.assertEqual(a, b)
@@ -133,16 +152,16 @@ class TestDict(unittest.TestCase):
         md_a = MyDictionary().from_list(a)
         md_b = MyDictionary().from_list(b)
         md_c = MyDictionary().from_list(c)
-        r_one = md_a.contact(md_b).contact(md_c)
-        r_two = md_a.contact(md_b.contact(md_c))
+        r_one = md_a.concat(md_b).concat(md_c)
+        r_two = md_a.concat(md_b.concat(md_c))
         self.assertEqual(r_two, r_one)
 
         # a+{}=a,{}+a=a
         self.assertEqual(MyDictionary().from_list(a).
-                         contact(MyDictionary().from_list({})),
+                         concat(MyDictionary().from_list({})),
                          MyDictionary().from_list(a))
         self.assertEqual(MyDictionary().from_list({}).
-                         contact(MyDictionary().from_list(a)),
+                         concat(MyDictionary().from_list(a)),
                          MyDictionary().from_list(a))
 
     def test_iter(self):
@@ -158,28 +177,6 @@ class TestDict(unittest.TestCase):
     def test_reverse(self):
         tlist = MyDictionary()
         self.assertEqual(tlist, tlist.empty())
-
-    @given(st.dictionaries(st.integers(), st.integers()))
-    def test_empty(self, a):
-        dic = {}
-        test_dict = MyDictionary().from_list(a)
-        test_dict2 = MyDictionary().from_list(dic)
-        self.assertEqual(test_dict.empty(), test_dict2)
-
-    @given(st.dictionaries(st.integers(), st.characters()))
-    def test_contact(self, a):
-        test_dict = MyDictionary()
-        test_dict2 = MyDictionary()
-        dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
-        test_dict = test_dict.from_list(dic)
-        test_dict2 = test_dict2.from_list(a)
-        test_dict3 = MyDictionary(test_dict.size() + test_dict2.size())
-        for e in test_dict:
-            test_dict3.add(e[0], e[1])
-        for e in test_dict2:
-            test_dict3.add(e[0], e[1])
-        test_dict4 = test_dict.contact(test_dict2)
-        self.assertEqual(test_dict3, test_dict4)
 
 
 # Press the green button in the gutter to run the script.

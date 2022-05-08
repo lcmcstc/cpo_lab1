@@ -5,7 +5,7 @@ import threading
 from threading import Lock
 
 
-class MyEntry:
+class Entry:
 
     def __init__(self, key, value):
         self.key = key
@@ -23,7 +23,7 @@ class MyEntry:
             return False
 
 
-class MyIter:
+class Next:
     def __init__(self, myDictionary):
         self.data = myDictionary
         self.index = 0
@@ -247,7 +247,7 @@ class MyDictionary:
 
     def __iter__(self):
         self.a = 0
-        return MyIter(self)
+        return Next(self)
 
     def empty(self):
         self.dic_size = 0
@@ -258,7 +258,7 @@ class MyDictionary:
         self.top = -1
         return self
 
-    def contact(self, other):
+    def concat(self, other):
         ret = MyDictionary(self.dic_size + other.dic_size)
         for item in self:
             ret.add(item[0], item[1])
