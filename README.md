@@ -68,6 +68,10 @@ Dictionary based on hash-map, open address
 
 ## Changelog
 
+- 08.05.2022 - 64-65
+  - Modify the name
+- 02.05.2022 - 62-63
+  - update README.md
 - 02.05.2022 - 61
   - rename `__contain` to `member`
 - 02.05.2022 - 55-60
