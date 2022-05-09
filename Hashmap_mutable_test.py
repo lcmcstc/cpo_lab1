@@ -147,12 +147,14 @@ class TestDict(unittest.TestCase):
     @given(a=st.dictionaries(st.integers(), st.integers()),
            b=st.dictionaries(st.integers(), st.integers()),
            c=st.dictionaries(st.integers(), st.integers()))
-    def test_monoid_properties(self, a, b, c):
+    def test_monoid_identity(self, a, b, c):
         # (a+b)+c=a+(b+c)
         md_a = MyDictionary().from_list(a)
         md_b = MyDictionary().from_list(b)
         md_c = MyDictionary().from_list(c)
+        # (a+b)+c
         r_one = md_a.concat(md_b).concat(md_c)
+        # a+(b+c)
         r_two = md_a.concat(md_b.concat(md_c))
         self.assertEqual(r_two, r_one)
 
