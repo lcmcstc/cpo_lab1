@@ -154,7 +154,6 @@ class TestDict(unittest.TestCase):
         md_c = MyDictionary().from_list(c)
         # (a+b)+c
         r_one = md_a.concat(md_b).concat(md_c)
-
         md_a = MyDictionary().from_list(a)
         md_b = MyDictionary().from_list(b)
         md_c = MyDictionary().from_list(c)
