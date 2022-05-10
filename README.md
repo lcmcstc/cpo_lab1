@@ -60,7 +60,7 @@ Dictionary based on hash-map, open address
 - `__iter__( )`
 - PBT: `test_from_list_to_list_equality(a)`
 - PBT: `test_python_len_and_list_size_equality(a)`
-
+- PBT: `test_monoid_identity(self, a, b, c)`
 ## Contribution
 
 - Li ChangMinChen (212320023@hdu.edu.cn) -- Hashmap_mutable.py
