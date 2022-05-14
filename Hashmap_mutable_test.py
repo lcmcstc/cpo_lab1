@@ -87,20 +87,15 @@ class TestDict(unittest.TestCase):
         test_dict2 = MyDictionary().from_list(dic)
         self.assertEqual(test_dict.empty(), test_dict2)
 
-    @given(st.dictionaries(st.integers(), st.characters()))
-    def test_concat(self, a):
-        test_dict = MyDictionary()
-        test_dict2 = MyDictionary()
-        dic = {0: 'a', 1: 'b', 3: 'c', 4: 'd'}
-        test_dict = test_dict.from_list(dic)
-        test_dict2 = test_dict2.from_list(a)
-        test_dict3 = MyDictionary(test_dict.size() + test_dict2.size())
-        for e in test_dict:
-            test_dict3.add(e[0], e[1])
-        for e in test_dict2:
-            test_dict3.add(e[0], e[1])
-        test_dict4 = test_dict.concat(test_dict2)
-        self.assertEqual(test_dict3, test_dict4)
+    def test_concat(self):
+        t1 = MyDictionary(2)
+        t1.add(0, 'a')
+        t1.add(1, 'b')
+        t2 = MyDictionary(2)
+        t2.add(3, 'c')
+        t2.add(4, 'd')
+        t1.concat(t2)
+        self.assertEqual(t1, t2.from_list({0: 'a', 1: 'b', 3: 'c', 4: 'd'}))
 
     def test_to_list(self):
         self.assertDictEqual(MyDictionary().to_list(), {})
